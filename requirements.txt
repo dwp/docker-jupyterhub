@@ -1,0 +1,4 @@
+jupytext==1.3.2
+oauthenticator==0.10.0
+pyspark==2.4.4
+s3contents==0.3.3

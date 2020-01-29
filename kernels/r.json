@@ -1,0 +1,1 @@
+{"argv": ["/opt/conda/envs/rkernel/bin/R", "--slave", "-e", "IRkernel::main()", "--args", "{connection_file}"], "display_name": "SparkR", "language": "R", "env": {"SPARK_HOME": "/usr/lib/spark", "R_LIBS_USER": "~/R/library"} }

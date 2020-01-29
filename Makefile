@@ -1,4 +1,10 @@
 SHELL:=bash
+NAME := $(shell basename `pwd`)
+HASH := $(shell git rev-parse --short=8 HEAD)
+ECR_URL := 00000000.dkr.ecr.eu-west-2.amazonaws.com/
+ROLE := admin
+REGION := eu-west-2
+JUPYTERHUB_PORT := 8000
 
 default: help
 
@@ -22,3 +28,23 @@ git-hooks: ## Set up hooks in .git/hooks
 			ln -s -f ../../.githooks/$${hook} $${HOOK_DIR}/$${hook}; \
 		done \
 	}
+
+.PHONY: build
+build:
+	docker build -t ${NAME}:${HASH} .
+
+.PHONY: tag
+tag: build
+	docker tag ${NAME}:${HASH} ${ECR_URL}/${NAME}:${HASH}
+
+.PHONY: push
+push: tag
+	docker push ${ECR_URL}/${NAME}:${HASH}
+
+.PHONY: run
+run:
+	docker run --rm -it --name ${NAME} -p ${JUPYTERHUB_PORT}:${JUPYTERHUB_PORT} ${NAME}:${HASH}
+
+.PHONY: ecr-login-awsv
+ecr-login-awsv:
+	aws-vault exec ${ROLE} -- aws ecr get-login --no-include-email --region ${REGION} | bash
