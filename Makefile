@@ -1,8 +1,8 @@
 SHELL:=bash
-NAME := $(shell basename `pwd`)
+NAME := jupyterhub
 HASH := $(shell git rev-parse --short=8 HEAD)
-ECR_URL := 00000000.dkr.ecr.eu-west-2.amazonaws.com/
-ROLE := admin
+ECR_URL := 00000000.dkr.ecr.eu-west-2.amazonaws.com/${NAME}
+ROLE := administrator
 REGION := eu-west-2
 JUPYTERHUB_PORT := 8000
 
