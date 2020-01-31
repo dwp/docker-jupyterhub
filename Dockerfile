@@ -15,6 +15,7 @@ RUN pip3 install \
 ADD kernels /srv/jupyterhub/
 # TODO conda install
 # TODO enable r kernel
+RUN jupyter lab build
 ENTRYPOINT ["jupyterhub"]
 EXPOSE 8000
 # TODO Add COMMAND to pickup config file
