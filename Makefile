@@ -30,21 +30,21 @@ git-hooks: ## Set up hooks in .git/hooks
 	}
 
 .PHONY: build
-build:
+build: ## build the container
 	docker build -t ${NAME}:${HASH} .
 
 .PHONY: tag
-tag: build
+tag: build ## tag the container
 	docker tag ${NAME}:${HASH} ${ECR_URL}/${NAME}:${HASH}
 
 .PHONY: push
-push: tag
+push: tag ## push the container
 	docker push ${ECR_URL}/${NAME}:${HASH}
 
 .PHONY: run
-run:
+run: ## run the container
 	docker run --rm -it --name ${NAME} -p ${JUPYTERHUB_PORT}:${JUPYTERHUB_PORT} ${NAME}:${HASH}
 
 .PHONY: ecr-login-awsv
-ecr-login-awsv:
+ecr-login-awsv: ##login to ECR with creds from aws-vault
 	aws-vault exec ${ROLE} -- aws ecr get-login --no-include-email --region ${REGION} | bash
