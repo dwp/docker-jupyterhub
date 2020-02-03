@@ -32,7 +32,7 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     environment:
-      IMAGE_NAME: docker-squid-s3
+      IMAGE_NAME: dwpdigital/jupyterhub
     steps:
       - checkout
       - setup_remote_docker
@@ -52,7 +52,7 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     environment:
-      IMAGE_NAME: docker-squid-s3
+      IMAGE_NAME: dwpdigital/jupyterhub
     steps:
       - checkout
       - setup_remote_docker
