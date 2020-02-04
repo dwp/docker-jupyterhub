@@ -4,4 +4,4 @@ oauthenticator==0.10.0
 pypandoc==1.4
 pyspark==2.4.4
 s3contents==0.3.3
-sparkmagic==0.15.0
+sparkmagic==0.12.9
