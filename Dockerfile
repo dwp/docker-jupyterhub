@@ -16,7 +16,7 @@ RUN pip3 install \
         --trusted-host pypi.python.org \
         --trusted-host files.pythonhosted.org \
         -r /srv/jupyterhub/requirements.txt
-ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/master/examples/cull-idle/cull_idle_servers.py /etc/jupyterhub/conf/
+ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/master/examples/cull-idle/cull_idle_servers.py /usr/local/share/jupyterhub/
 ADD kernels /srv/jupyterhub/
 # TODO conda install
 # TODO enable r kernel
