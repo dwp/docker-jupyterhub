@@ -2,12 +2,10 @@ import os
 import logging
 import sys
 
-import pycurl
-from fnmatch import fnmatch
-from urllib.parse import urlparse
+from oauthenticator.awscognito import AWSCognitoAuthenticator
 from tornado.httpclient import HTTPRequest
 
-from oauthenticator.awscognito import AWSCognitoAuthenticator
+from proxy_configuration import configure_proxy
 
 notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR')
 network_name = 'jupyterhub-network'
@@ -43,49 +41,6 @@ c.AWSCognitoAuthenticator.oauth_callback_url = ''
 c.AWSCognitoAuthenticator.username_key = 'username'
 # c.AWSCognitoAuthenticator.oauth_logout_redirect_url = 'YOUR_LOGOUT_REDIRECT_URL'
 
-# TODO move all the below to different file and import
-# HACK: consume HTTP?_PROXY and NO_PROXY environment variables
-# so Hub can connect to external Gitlab.
-# https://github.com/jupyterhub/oauthenticator/issues/217
-
-
-def get_proxies_for_url(url):
-    http_proxy = os.environ.get("HTTP_PROXY", os.environ.get("http_proxy"))
-    https_proxy = os.environ.get("HTTPS_PROXY", os.environ.get("https_proxy"))
-    no_proxy = os.environ.get("NO_PROXY", os.environ.get("no_proxy"))
-    p = urlparse(url)
-    netloc = p.netloc
-    _userpass, _, hostport = p.netloc.rpartition("@")
-    url_hostname, _, _port = hostport.partition(":")
-    proxies = {}
-    if http_proxy:
-        proxies["http"] = http_proxy
-    if https_proxy:
-        proxies["https"] = https_proxy
-    if no_proxy:
-        for hostname in no_proxy.split(","):
-            # Support "*.server.com" and "10.*"
-            if fnmatch(url_hostname, hostname.strip()):
-                proxies = {}
-                break
-            # Support ".server.com"
-            elif hostname.strip().replace("*", "").endswith(url_hostname):
-                proxies = {}
-                break
-    return proxies
-
-
-def configure_proxy(curl):
-    logging.error("URL: {0}".format(curl.getinfo(pycurl.EFFECTIVE_URL)))
-    # we only want google oauth to use the proxy
-    proxies = get_proxies_for_url(curl.getinfo(pycurl.EFFECTIVE_URL))
-    if proxies:
-        host, _, port = proxies["https"].rpartition(":")
-        logging.error("adding proxy: https={0}:{1}".format(host, port))
-        curl.setopt(pycurl.PROXY, host)
-        if port:
-            curl.setopt(pycurl.PROXYPORT, int(port))
-
-
-# never do this
+"""HACK: consume HTTPS_PROXY and NO_PROXY environment variables so Hub can connect to external services.
+https://github.com/jupyterhub/oauthenticator/issues/217"""
 HTTPRequest._DEFAULTS['prepare_curl_callback'] = configure_proxy
