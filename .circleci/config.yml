@@ -22,11 +22,13 @@ jobs:
             docker build -t $IMAGE_NAME:latest .
       - run:
           name: Archive Docker image
-          command: docker save -o image.tar $IMAGE_NAME
+          command: |
+            docker save -o image.tar $IMAGE_NAME
       - persist_to_workspace:
           root: .
           paths:
             - ./image.tar
+            - ./Dockerfile
 
   snyk-pr:
     docker:
@@ -34,17 +36,18 @@ jobs:
     environment:
       IMAGE_NAME: dwpdigital/jupyterhub
     steps:
-      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - setup_remote_docker
       - run:
-          command: 'docker build -t $IMAGE_NAME:latest .'
-          name: Build Docker image
-      # Snyk scan examines Docker container for sev:high and will fail if found
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+      # Snyk scan examines Docker image for sev:high and will fail if found
       - snyk/scan:
           organization: dwp-dataworks
           docker-image-name: '$IMAGE_NAME:latest'
           severity-threshold: high
-          target-file: Dockerfile
+          target-file: /tmp/workspace/Dockerfile
           monitor-on-build: false
           project: '${CIRCLE_PROJECT_REPONAME}/pr-docker'
 
@@ -54,12 +57,13 @@ jobs:
     environment:
       IMAGE_NAME: dwpdigital/jupyterhub
     steps:
-      - checkout
+      - attach_workspace:
+          at: /tmp/workspace
       - setup_remote_docker
       - run:
-          command: 'docker build -t $IMAGE_NAME:latest .'
-          name: Build Docker image
-      # Snyk scan examines Docker container for sev:high and will fail if found
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+      # Snyk scan examines Docker image for sev:high and will fail if found
       - snyk/scan:
           organization: dwp-dataworks
           docker-image-name: '$IMAGE_NAME:latest'
