@@ -68,7 +68,7 @@ jobs:
           organization: dwp-dataworks
           docker-image-name: '$IMAGE_NAME:latest'
           severity-threshold: high
-          target-file: Dockerfile
+          target-file: /tmp/workspace/Dockerfile
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-docker'
 
   publish-latest:
