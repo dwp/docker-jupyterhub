@@ -1,0 +1,284 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-UBUNTU1804-UTILLINUX-345957:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-TAR-312298:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-SHADOW-306209:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-SHADOW-306233:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-PYTHON27-548346:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-PCRE3-345325:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-PCRE3-345357:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-PCRE3-452543:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-OPENSSL10-466483:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-OPENSSL10-536862:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-OPENSSL-466482:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-OPENSSL-466490:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-OPENSSL-466493:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-OPENSSL-536861:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-OPENLDAP-304606:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312678:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312714:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NETTLE-302013:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NCURSES-481908:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NCURSES-482343:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-LZ4-482649:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-LIBTASN16-339588:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-LIBGCRYPT20-455294:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-KRB5-459140:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-HEIMDAL-346634:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GNUTLS28-340583:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GNUPG2-453470:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GNUPG2-541656:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-336243:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-345677:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-347807:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-347870:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-356373:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-356503:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-451233:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-451499:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-DPKG-336528:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-COREUTILS-317469:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-BASH-542613:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-SYSTEMD-346780:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-PYTHON36-474724:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-PYTHON27-474726:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NPM-271440:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312648:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312656:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312670:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312698:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312753:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-312767:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NODEJS-451043:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NGHTTP2-459190:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-NGHTTP2-459213:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-KRB5-396230:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-356555:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-451227:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+
+  SNYK-UBUNTU1804-GLIBC-451228:
+    - '*':
+        reason: removed, ticket raised for project remediation (DW-3136)
+        expires: 2020-05-11T00:00:00.000Z
+   
