@@ -24,7 +24,8 @@ RUN pip install \
         --trusted-host files.pythonhosted.org \
         -r /srv/jupyterhub/requirements.txt
 
-RUN apt-get remove -y --purge gcc \
+RUN apt-get remove -y --purge \
+        gcc \
         libkrb5-dev \
         pandoc \
         python3-dev \
