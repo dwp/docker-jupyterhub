@@ -1,6 +1,7 @@
 FROM jupyterhub/jupyterhub:1.2
 
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y \
         gcc \
         libkrb5-dev \
@@ -22,6 +23,12 @@ RUN pip install \
         --trusted-host pypi.python.org \
         --trusted-host files.pythonhosted.org \
         -r /srv/jupyterhub/requirements.txt
+
+RUN apt-get remove -y --purge gcc \
+        libkrb5-dev \
+        pandoc \
+        python3-dev \
+    && apt-get autoremove -y
 
 ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/master/examples/cull-idle/cull_idle_servers.py /usr/local/share/jupyterhub/
 
