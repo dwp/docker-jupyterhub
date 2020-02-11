@@ -48,7 +48,6 @@ jobs:
           docker-image-name: '$IMAGE_NAME:latest'
           severity-threshold: high
           target-file: /tmp/workspace/Dockerfile
-          monitor-on-build: false
           project: '${CIRCLE_PROJECT_REPONAME}/pr-docker'
 
   snyk-master:
