@@ -19,6 +19,9 @@ c.Spawner.environment = {
 c.JupyterHub.hub_ip = '0.0.0.0'
 c.JupyterHub.port = 8000
 
+c.JupyterHub.ssl_key = '/etc/jupyterhub/conf/key.pem'
+c.JupyterHub.ssl_cert = '/etc/jupyterhub/conf/cert.pem'
+
 c.JupyterHub.admin_access = True
 c.Authenticator.admin_users = {
     'jovyan',
