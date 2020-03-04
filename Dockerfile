@@ -1,57 +1,40 @@
-FROM jupyterhub/jupyterhub:1.2
+FROM alpine:latest
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y \
-    gcc \
-    libkrb5-dev \
-    pandoc \
-    python3-dev \
-    && apt-get clean
+RUN apk add --no-cache alpine-sdk bash curl-dev g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev
 
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.6 1 \
-    && update-alternatives --install /usr/local/bin/pip pip /usr/local/bin/pip3 1
+RUN npm install -g configurable-http-proxy
 
-RUN pip install --upgrade \
-    pip \
-    setuptools \
-    wheel
+RUN pip3 install --upgrade pip setuptools wheel pycurl
 
 ADD requirements.txt /srv/jupyterhub/
-RUN pip install \
+RUN pip3 install \
     --trusted-host pypi.org \
     --trusted-host pypi.python.org \
     --trusted-host files.pythonhosted.org \
     -r /srv/jupyterhub/requirements.txt
 
-RUN apt-get remove -y --purge \
-    gcc \
-    libkrb5-dev \
-    pandoc \
-    python3-dev \
-    && apt-get autoremove -y
-
 ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/master/examples/cull-idle/cull_idle_servers.py /usr/local/share/jupyterhub/
 
-RUN jupyter lab build
-RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+RUN jupyter lab build \
+    && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
-WORKDIR /usr/local/lib/python3.6/dist-packages
+WORKDIR /usr/lib/python3.8/site-packages/
+
 RUN jupyter-kernelspec install sparkmagic/kernels/pysparkkernel \
-    && jupyter-kernelspec install sparkmagic/kernels/sparkrkernel
-RUN jupyter serverextension enable --py sparkmagic
+    && jupyter-kernelspec install sparkmagic/kernels/sparkrkernel \
+    && jupyter serverextension enable --py sparkmagic
 
-WORKDIR /etc/jupyterhub/conf
-ADD proxy_configuration.py /usr/lib/python3/dist-packages/proxy_configuration.py
+ADD proxy_configuration.py /usr/lib/python3.8/site-packages/proxy_configuration.py
 ADD example_jupyterhub_config.py /etc/jupyterhub/conf/jupyterhub_config.py
 ADD example_config.json /etc/jupyterhub/conf/sparkmagic/config.json
 
-ADD entrypoint.sh /
+RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev
 
+ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+
+EXPOSE 8000
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["-f", "/etc/jupyterhub/conf/jupyterhub_config.py"]
-
-EXPOSE 8000
