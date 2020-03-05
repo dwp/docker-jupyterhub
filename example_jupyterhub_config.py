@@ -22,11 +22,6 @@ c.JupyterHub.port = 8000
 c.JupyterHub.ssl_key = '/etc/jupyterhub/conf/key.pem'
 c.JupyterHub.ssl_cert = '/etc/jupyterhub/conf/cert.pem'
 
-c.JupyterHub.admin_access = True
-c.Authenticator.admin_users = {
-    'jovyan',
-}
-
 c.JupyterHub.services = [
     {
         'name': 'cull-idle',
@@ -37,11 +32,12 @@ c.JupyterHub.services = [
 
 # https://cognito-idp.eu-west-2.amazonaws.com/${user_pool_id}/.well-known/openid-configuration
 c.JupyterHub.authenticator_class = 'oauthenticator.awscognito.AWSCognitoAuthenticator'
-c.AWSCognitoAuthenticator.client_id = ''
-c.AWSCognitoAuthenticator.client_secret = ''
-c.AWSCognitoAuthenticator.oauth_callback_url = ''
+c.AWSCognitoAuthenticator.client_id = os.environ.get('COGNITO_CLIENT_ID')
+c.AWSCognitoAuthenticator.client_secret = os.environ.get('COGNITO_CLIENT_SECRET')
+c.AWSCognitoAuthenticator.oauth_callback_url = os.environ.get('COGNITO_OAUTH_CALLBACK_URL')
+c.AWSCognitoAuthenticator.oauth_logout_redirect_url = os.environ.get('COGNITO_OAUTH_LOGOUT_CALLBACK_URL')
 c.AWSCognitoAuthenticator.username_key = 'username'
-# c.AWSCognitoAuthenticator.oauth_logout_redirect_url = 'YOUR_LOGOUT_REDIRECT_URL'
+
 
 """HACK: consume HTTPS_PROXY and NO_PROXY environment variables so Hub can connect to external services.
 https://github.com/jupyterhub/oauthenticator/issues/217"""
