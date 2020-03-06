@@ -12,7 +12,7 @@ network_name = 'jupyterhub-network'
 c.Spawner.debug = False
 c.Spawner.default_url = '/lab'
 c.Spawner.environment = {
-    'SPARKMAGIC_CONF_DIR': '/etc/jupyterhub/conf/sparkmagic/',
+    'SPARKMAGIC_CONF_DIR': os.environ.get('SPARKMAGIC_CONF_DIR', '~/.sparkmagic'),
     'JUPYTER_ENABLE_LAB': 'yes'
 }
 
