@@ -31,12 +31,15 @@ c.JupyterHub.services = [
 ]
 
 # https://cognito-idp.eu-west-2.amazonaws.com/${user_pool_id}/.well-known/openid-configuration
-c.JupyterHub.authenticator_class = 'oauthenticator.awscognito.AWSCognitoAuthenticator'
-c.AWSCognitoAuthenticator.client_id = os.environ.get('COGNITO_CLIENT_ID')
-c.AWSCognitoAuthenticator.client_secret = os.environ.get('COGNITO_CLIENT_SECRET')
-c.AWSCognitoAuthenticator.oauth_callback_url = os.environ.get('COGNITO_OAUTH_CALLBACK_URL')
-c.AWSCognitoAuthenticator.oauth_logout_redirect_url = os.environ.get('COGNITO_OAUTH_LOGOUT_CALLBACK_URL')
-c.AWSCognitoAuthenticator.username_key = 'username'
+if os.environ.get('COGNITO_ENABLED'):
+    c.JupyterHub.authenticator_class = 'oauthenticator.awscognito.AWSCognitoAuthenticator'
+    c.AWSCognitoAuthenticator.client_id = os.environ.get('COGNITO_CLIENT_ID')
+    c.AWSCognitoAuthenticator.client_secret = os.environ.get('COGNITO_CLIENT_SECRET')
+    c.AWSCognitoAuthenticator.oauth_callback_url = os.environ.get('COGNITO_OAUTH_CALLBACK_URL')
+    c.AWSCognitoAuthenticator.oauth_logout_redirect_url = os.environ.get('COGNITO_OAUTH_LOGOUT_CALLBACK_URL')
+    c.AWSCognitoAuthenticator.username_key = 'username'
+else:
+    c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
 
 
 """HACK: consume HTTPS_PROXY and NO_PROXY environment variables so Hub can connect to external services.
