@@ -26,8 +26,8 @@ RUN jupyter-kernelspec install sparkmagic/kernels/pysparkkernel \
     && jupyter serverextension enable --py sparkmagic
 
 ADD proxy_configuration.py /usr/lib/python3.8/site-packages/proxy_configuration.py
-ADD example_jupyterhub_config.py /etc/jupyterhub/conf/jupyterhub_config.py
-ADD example_config.json /etc/jupyterhub/conf/sparkmagic/config.json
+ADD jupyterhub_config.py /etc/jupyterhub/conf/jupyterhub_config.py
+ADD template_sparkmagic_config.json /etc/jupyterhub/conf/sparkmagic/config.json
 
 RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev
 
