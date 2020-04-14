@@ -6,10 +6,6 @@
 
 echo "Adding ${USER}"
 adduser -h "/home/${USER}" -D ${USER}
-mkdir -p /home/${USER}/.sparkmagic
-cp /etc/jupyterhub/conf/sparkmagic/template_sparkmagic_config.json /home/${USER}/.sparkmagic/template_sparkmagic_config.json
-sed -i "s/USERNAME_TO_REPLACE/${USER}/g" /home/${USER}/.sparkmagic/template_sparkmagic_config.json
-chown -R ${USER}:${USER} /home/${USER}
-chmod -R 2770 /home/${USER}
+sed -i "s/USERNAME_TO_REPLACE/${USER}/g" /home/${USER}/.sparkmagic/config.json
 
 jupyterhub $@

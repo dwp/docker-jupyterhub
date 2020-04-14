@@ -27,7 +27,10 @@ RUN jupyter-kernelspec install sparkmagic/kernels/pysparkkernel \
 
 ADD proxy_configuration.py /usr/lib/python3.8/site-packages/proxy_configuration.py
 ADD jupyterhub_config.py /etc/jupyterhub/conf/jupyterhub_config.py
-ADD template_sparkmagic_config.json /etc/jupyterhub/conf/sparkmagic/template_sparkmagic_config.json
+
+# Create template user home
+RUN mkdir -p /etc/skel/.sparkmagic
+ADD template_sparkmagic_config.json /etc/skel/.sparkmagic/config.json
 
 RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev
 
