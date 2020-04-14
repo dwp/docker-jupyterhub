@@ -39,7 +39,9 @@ if os.environ.get('COGNITO_ENABLED'):
     c.AWSCognitoAuthenticator.oauth_logout_redirect_url = os.environ.get('COGNITO_OAUTH_LOGOUT_CALLBACK_URL')
     c.AWSCognitoAuthenticator.username_key = 'username'
 else:
-    c.JupyterHub.authenticator_class = 'dummyauthenticator.DummyAuthenticator'
+    c.JupyterHub.authenticator_class = 'passthroughauth.PassThroughAuthenticator'
+    c.PassThroughAuthenticator.guest_user = os.environ.get('USER')
+    c.Authenticator.auto_login = True
 
 
 """HACK: consume HTTPS_PROXY and NO_PROXY environment variables so Hub can connect to external services.
