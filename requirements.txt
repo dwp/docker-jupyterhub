@@ -1,8 +1,8 @@
-jupyterlab==1.2.6
-jupytext==1.3.2
-oauthenticator==0.10.0
-jupyterhub-passthroughauth==0.0.1
-pypandoc==1.4
-pyspark==2.4.4
-s3contents==0.3.3
+jupyterlab==1.2.11
+oauthenticator==0.11.0
+pypandoc==1.5
+pyspark==2.4.5
+s3contents==0.4.0
 sparkmagic==0.15.0
+hybridcontents==0.3.0
+jupyterhub-passthroughauth==0.0.1

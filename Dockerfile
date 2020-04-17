@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache alpine-sdk bash curl-dev g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev
+RUN apk add --no-cache alpine-sdk bash curl-dev g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev linux-pam
 
 RUN npm install -g configurable-http-proxy
 
@@ -29,7 +29,8 @@ ADD proxy_configuration.py /usr/lib/python3.8/site-packages/proxy_configuration.
 ADD jupyterhub_config.py /etc/jupyterhub/conf/jupyterhub_config.py
 
 # Create template user home
-RUN mkdir -p /etc/skel/.sparkmagic
+RUN mkdir -p /etc/skel/.sparkmagic /etc/skel/.jupyter/
+ADD jupyter_local_conf.py /etc/skel/.jupyter/jupyter_notebook_config.py
 ADD template_sparkmagic_config.json /etc/skel/.sparkmagic/config.json
 
 RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev
