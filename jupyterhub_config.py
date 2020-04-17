@@ -1,7 +1,6 @@
 import os
 import sys
 
-from oauthenticator.awscognito import AWSCognitoAuthenticator
 from tornado.httpclient import HTTPRequest
 
 from proxy_configuration import configure_proxy
@@ -15,6 +14,7 @@ c.Spawner.environment = {
     'SPARKMAGIC_CONF_DIR': os.environ.get('SPARKMAGIC_CONF_DIR', '~/.sparkmagic'),
     'JUPYTER_ENABLE_LAB': 'yes'
 }
+c.Spawner.env_keep = ['AWS_DEFAULT_REGION','AWS_EXECUTION_ENV','AWS_REGION','AWS_CONTAINER_CREDENTIALS_RELATIVE_URI','ECS_CONTAINER_METADATA_URI', "S3_BUCKET", "USER"]
 
 c.JupyterHub.hub_ip = '0.0.0.0'
 c.JupyterHub.port = 8000
@@ -32,6 +32,7 @@ c.JupyterHub.services = [
 
 # https://cognito-idp.eu-west-2.amazonaws.com/${user_pool_id}/.well-known/openid-configuration
 if os.environ.get('COGNITO_ENABLED'):
+    from oauthenticator.awscognito import AWSCognitoAuthenticator
     c.JupyterHub.authenticator_class = 'oauthenticator.awscognito.AWSCognitoAuthenticator'
     c.AWSCognitoAuthenticator.client_id = os.environ.get('COGNITO_CLIENT_ID')
     c.AWSCognitoAuthenticator.client_secret = os.environ.get('COGNITO_CLIENT_SECRET')
@@ -39,10 +40,9 @@ if os.environ.get('COGNITO_ENABLED'):
     c.AWSCognitoAuthenticator.oauth_logout_redirect_url = os.environ.get('COGNITO_OAUTH_LOGOUT_CALLBACK_URL')
     c.AWSCognitoAuthenticator.username_key = 'username'
 else:
-    c.JupyterHub.authenticator_class = 'passthroughauth.PassThroughAuthenticator'
+    c.JupyterHub.authenticator_class = 'passthroughauth.auth.PassThroughAuthenticator'
     c.PassThroughAuthenticator.guest_user = os.environ.get('USER')
     c.Authenticator.auto_login = True
-
 
 """HACK: consume HTTPS_PROXY and NO_PROXY environment variables so Hub can connect to external services.
 https://github.com/jupyterhub/oauthenticator/issues/217"""
