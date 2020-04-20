@@ -281,4 +281,8 @@ ignore:
     - '*':
         reason: introduced by base image, cannot be fixed
         expires: 2020-05-11T00:00:00.000Z
-
+  
+  SNYK-PYTHON-PARSO-174930:
+    - '*':
+        reason: Disuputed CVE, awaiting resolution - widely acknowledged as not a vulnerability
+        expires: 2020-05-11T00:00:00.000Z
