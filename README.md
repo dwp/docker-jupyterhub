@@ -10,6 +10,8 @@ This jupyterhub image requires the following environment variables at runtime:
 | Env var | Description | Example value |
 | ------- | ----------- | ------------- |
 | USER    | User to run jupyterhub as | steve |
+| KMS_HOME    | ARN for users home KMS Key | arn:xxx: |
+| KMS_SHARED    | ARN for shared KMS Key | arn:xxx: |
 
 The following environment variables can be used to configure Cognito authentication. 
 
