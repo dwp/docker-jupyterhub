@@ -9,6 +9,8 @@ username = getpass.getuser()
 
 c = get_config()
 
+c.NotebookApp.terminals_enabled = False
+
 c.NotebookApp.contents_manager_class = HybridContentsManager
 
 c.HybridContentsManager.manager_classes = {
@@ -19,11 +21,15 @@ c.HybridContentsManager.manager_classes = {
 c.HybridContentsManager.manager_kwargs = {
     's3home': {
         "bucket": os.environ.get('S3_BUCKET'),
-        "prefix": "home/" + os.path.join(username, "jupyter_notebooks")
+        "prefix": "home/" + os.path.join(username, "jupyter_notebooks"),
+        "sse": "aws:kms",
+        "kms_key_id": os.environ.get('KMS_HOME'),
     },
     's3shared': {
         "bucket": os.environ.get('S3_BUCKET'),
-        "prefix": "shared/jupyter_notebooks"
+        "prefix": "shared/jupyter_notebooks",
+        "sse": "aws:kms",
+        "kms_key_id": os.environ.get('KMS_SHARED'),
     },
 }
 
@@ -31,6 +37,4 @@ def no_spaces(path):
     return ' ' not in path
 
 c.HybridContentsManager.path_validators = {
-    's3home': no_spaces,
-    's3shared': no_spaces
 }
