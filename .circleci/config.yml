@@ -12,24 +12,24 @@ executors:
       - image: circleci/buildpack-deps:stretch
 
 jobs:
-  # build_base:
-  #   executor: docker-publisher
-  #   steps:
-  #     - checkout
-  #     - setup_remote_docker
-  #     - run:
-  #         name: Build Base Docker image
-  #         command: |
-  #           docker build -t $BASE_IMAGE_NAME:latest base_image/.
-  #     - run:
-  #         name: Archive Base Docker image
-  #         command: |
-  #           docker save -o image.tar $BASE_IMAGE_NAME
-  #     - persist_to_workspace:
-  #         root: .
-  #         paths:
-  #           - ./image.tar
-  #           - ./Dockerfile
+  build_base:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Base Docker image
+          command: |
+            docker build -t $BASE_IMAGE_NAME:latest base_image/.
+      - run:
+          name: Archive Base Docker image
+          command: |
+            docker save -o image.tar $BASE_IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
+            - ./Dockerfile
   build:
     executor: docker-publisher
     steps:
@@ -138,8 +138,8 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      # - build_base
-      - build
+      - build_base
+      # - build
       - snyk-pr:
           requires:
             - build
