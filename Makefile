@@ -29,6 +29,10 @@ git-hooks: ## Set up hooks in .git/hooks
 		done \
 	}
 
+.PHONY: build_base
+build: ## build the container
+	docker build -t ${NAME}_base:${HASH} ./base_image
+
 .PHONY: build
 build: ## build the container
 	docker build -t ${NAME}:${HASH} .
