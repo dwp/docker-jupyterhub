@@ -139,28 +139,27 @@ workflows:
   build-and-deploy:
     jobs:
       - build_base
-      # - build
       - snyk-pr:
           requires:
-            - build
+            # - build
           filters:
             branches:
               ignore: master
       - snyk-master:
           requires:
-            - build
+            # - build
           filters:
             branches:
               only: master
       - publish-github-release:
           requires:
-            - build
+            # - build
           filters:
             branches:
               only: master
       - publish-latest:
           requires:
-            - build
+            # - build
             - publish-github-release
           filters:
             branches:
