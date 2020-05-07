@@ -35,8 +35,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Load archived Base Docker image
-        command: docker load -i /tmp/workspace/base_image.tar
+          name: Load archived Base Docker image
+          command: docker load -i /tmp/workspace/base_image.tar
       - run:
           name: Build DWP JupyterHub Docker image
           command: |
