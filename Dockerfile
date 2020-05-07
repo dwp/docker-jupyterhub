@@ -1,4 +1,4 @@
-FROM jupyterhub_base:latest
+FROM dwpdigital/jupyterhub_base:latest
 
 # Add message logging
 ADD handlers.py /usr/lib/python3.8/site-packages/notebook/services/kernels/handlers.py

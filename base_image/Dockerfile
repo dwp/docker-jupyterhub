@@ -11,14 +11,7 @@ RUN pip3 install \
     --trusted-host pypi.org \
     --trusted-host pypi.python.org \
     --trusted-host files.pythonhosted.org \
-    jupyterlab==1.2.11 \
-    oauthenticator==0.11.0 \
-    pypandoc==1.5 \
-    s3contents==0.4.0 \
-    sparkmagic==0.15.0 \
-    hybridcontents==0.3.0 \
-    jupyterhub-passthroughauth==0.0.1 \
-    pyspark==2.4.5
+    -r /srv/jupyterhub/requirements.txt
 
 ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/master/examples/cull-idle/cull_idle_servers.py /usr/local/share/jupyterhub/
 
