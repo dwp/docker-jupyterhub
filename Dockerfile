@@ -1,5 +1,8 @@
 FROM dwpdigital/jupyterhub_base:latest
 
+ADD proxy_configuration.py /usr/lib/python3.8/site-packages/proxy_configuration.py
+ADD jupyterhub_config.py /etc/jupyterhub/conf/jupyterhub_config.py
+
 # Add message logging
 ADD handlers.py /usr/lib/python3.8/site-packages/notebook/services/kernels/handlers.py
 
