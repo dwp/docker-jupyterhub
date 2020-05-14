@@ -43,5 +43,7 @@ RUN chmod +x /entrypoint.sh
 
 EXPOSE 8000
 
+HEALTHCHECK --interval=12s --timeout=12s --start-period=20s \  
+ CMD wget -O- -S --no-check-certificate -q https://localhost:8000/hub/health
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["-f", "/etc/jupyterhub/conf/jupyterhub_config.py"]
