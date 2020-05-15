@@ -24,12 +24,14 @@ c.HybridContentsManager.manager_kwargs = {
         "prefix": "home/" + os.path.join(username, "jupyter_notebooks"),
         "sse": "aws:kms",
         "kms_key_id": os.environ.get('KMS_HOME'),
+        "endpoint_url": "https://s3.eu-west-2.amazonaws.com",
     },
     's3shared': {
         "bucket": os.environ.get('S3_BUCKET'),
         "prefix": "shared/jupyter_notebooks",
         "sse": "aws:kms",
         "kms_key_id": os.environ.get('KMS_SHARED'),
+        "endpoint_url": "https://s3.eu-west-2.amazonaws.com",
     },
 }
 
