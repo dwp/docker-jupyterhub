@@ -7,5 +7,6 @@
 echo "Adding ${USER}"
 adduser -h "/home/${USER}" -D ${USER}
 sed -i "s/USERNAME_TO_REPLACE/${USER}/g" /home/${USER}/.sparkmagic/config.json
+sed -i "s/EMR_HOST_NAME_TO_REPLACE/${EMR_HOST_NAME}/g" /home/${USER}/.sparkmagic/config.json
 
 jupyterhub $@

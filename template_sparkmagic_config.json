@@ -2,21 +2,21 @@
   "kernel_python_credentials" : {
     "username": "",
     "password": "",
-    "url": "http://localhost:8998",
+    "url": "http://EMR_HOST_NAME_TO_REPLACE:8998",
     "auth": "None"
   },
 
   "kernel_scala_credentials" : {
     "username": "",
     "password": "",
-    "url": "http://localhost:8998",
+    "url": "http://EMR_HOST_NAME_TO_REPLACE:8998",
     "auth": "None"
   },
 
   "kernel_r_credentials": {
     "username": "",
     "password": "",
-    "url": "http://localhost:8998"
+    "url": "http://EMR_HOST_NAME_TO_REPLACE:8998"
   },
 
   "logging_config": {
