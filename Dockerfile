@@ -4,6 +4,8 @@ RUN apk add --no-cache alpine-sdk bash curl-dev g++ gcc krb5-dev krb5-libs libff
 
 RUN npm install -g configurable-http-proxy
 
+RUN python3 -m ensurepip
+
 RUN pip3 install --upgrade pip setuptools wheel pycurl
 
 ADD requirements.txt /srv/jupyterhub/
