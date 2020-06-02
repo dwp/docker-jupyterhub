@@ -7,11 +7,12 @@ A JupyterHub container with required extensions and libraries
 ## Environment Variables
 This jupyterhub image requires the following environment variables at runtime:
 
-| Env var | Description | Example value |
-| ------- | ----------- | ------------- |
-| USER    | User to run jupyterhub as | steve |
-| KMS_HOME    | ARN for users home KMS Key | arn:xxx: |
-| KMS_SHARED    | ARN for shared KMS Key | arn:xxx: |
+| Env var | Description | Example value | Required |
+| ------- | ----------- | ------------- | -------- |
+| USER    | User to run jupyterhub as | steve | true |
+| KMS_HOME    | ARN for users home KMS Key | arn:xxx: | true |
+| KMS_SHARED    | ARN for shared KMS Key | arn:xxx: | true |
+| LIVY_SESSION_STARTUP_TIMEOUT_SECONDS | Sparkmagic config to set the timeout for the Livy session startup | 120 | false |
 
 The following environment variables can be used to configure Cognito authentication. 
 
