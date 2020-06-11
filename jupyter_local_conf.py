@@ -2,7 +2,7 @@ import os
 import sys
 
 from hybridcontents import HybridContentsManager
-from s3contents import S3ContentsManager
+from HookEnabledS3ContentsManager import HookEnabledS3ContentsManager as S3ContentsManager
 import getpass
 
 username = getpass.getuser()
@@ -40,3 +40,17 @@ def no_spaces(path):
 
 c.HybridContentsManager.path_validators = {
 }
+
+def scrub_output_pre_save(path, model, contents_manager):
+    """scrub output before saving notebooks"""
+    # only run on notebooks
+    if model['type'] != 'notebook':
+        return
+
+    for cell in model['content']['cells']:
+        if cell['cell_type'] != 'code':
+            continue
+        cell['outputs'] = []
+        cell['execution_count'] = None
+
+c.S3ContentsManager.pre_save_hook = scrub_output_pre_save
