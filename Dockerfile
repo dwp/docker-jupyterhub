@@ -8,6 +8,8 @@ RUN python3 -m ensurepip
 
 RUN pip3 install --upgrade pip setuptools wheel pycurl
 
+RUN pip3 install --upgrade jupyterlab-git
+
 ADD requirements.txt /srv/jupyterhub/
 RUN pip3 install \
     --trusted-host pypi.org \
@@ -17,9 +19,9 @@ RUN pip3 install \
 
 ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/master/examples/cull-idle/cull_idle_servers.py /usr/local/share/jupyterhub/
 
-RUN jupyter lab build \
+RUN jupyter lab build --minimize=False \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager@2.0
 
 WORKDIR /usr/lib/python3.8/site-packages/
 
