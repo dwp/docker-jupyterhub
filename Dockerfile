@@ -42,6 +42,7 @@ ADD jupyter_local_conf.py /etc/skel/.jupyter/jupyter_notebook_config.py
 ADD template_sparkmagic_config.json /etc/skel/.sparkmagic/config.json
 
 RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev
+RUN apk add curl
 
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
