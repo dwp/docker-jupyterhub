@@ -11,7 +11,7 @@ sed -i "s/EMR_HOST_NAME_TO_REPLACE/${EMR_HOST_NAME}/g" /home/${USER}/.sparkmagic
 sed -i "s/LIVY_SESSION_STARTUP_TIMEOUT_SECONDS_TO_REPLACE/${LIVY_SESSION_STARTUP_TIMEOUT_SECONDS:-120}/g" /home/${USER}/.sparkmagic/config.json
 
 crontab -l > /tmp/crontab
-echo "${PUSH_CRON:-* * * * 2099} curl -s https://localhost:8000/hub/metrics -k | curl -s --data-binary @- http://${PUSH_HOST:-localhost}:${PUST_PORT:-9091}/metrics/job/jupyterhub/instance/${USER}" >> /tmp/crontab
+echo "${PUSH_CRON:-* * * * 2099} curl -s https://localhost:8000/hub/metrics -k | curl -s --data-binary @- http://${PUSH_HOST:-localhost}:${PUSH_PORT:-9091}/metrics/job/jupyterhub/instance/${USER}" >> /tmp/crontab
 crontab /tmp/crontab
 rm /tmp/crontab
 
