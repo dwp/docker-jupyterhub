@@ -44,6 +44,8 @@ c.JupyterHub.services = [
     }
 ]
 
+c.JupyterHub.authenticate_prometheus = False
+
 # https://cognito-idp.eu-west-2.amazonaws.com/${user_pool_id}/.well-known/openid-configuration
 if os.environ.get("COGNITO_ENABLED"):
     from oauthenticator.awscognito import AWSCognitoAuthenticator
