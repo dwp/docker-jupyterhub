@@ -15,5 +15,11 @@ echo "${PUSH_CRON:-* * * * 2099} curl -s https://localhost:8000/hub/metrics -k |
 crontab /tmp/crontab
 rm /tmp/crontab
 
+## Configure Spark-Monitor
+jupyter nbextension install sparkmonitor --py --user --symlink
+jupyter nbextension enable sparkmonitor --py --user
+jupyter serverextension enable --py --user sparkmonitor
+ipython profile create && echo "c.InteractiveShellApp.extensions.append('sparkmonitor.kernelextension')" >>  $(ipython profile locate default)/ipython_kernel_config.py
+
 /usr/sbin/crond -f -l 8 &
 jupyterhub $@

@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev linux-pam
+RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev linux-pam git
 
 RUN npm install -g configurable-http-proxy
 
@@ -16,8 +16,6 @@ RUN pip3 install \
     --trusted-host pypi.python.org \
     --trusted-host files.pythonhosted.org \
     -r /srv/jupyterhub/requirements.txt
-
-ADD https://raw.githubusercontent.com/jupyterhub/jupyterhub/master/examples/cull-idle/cull_idle_servers.py /usr/local/share/jupyterhub/
 
 RUN jupyter lab build --minimize=False \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \

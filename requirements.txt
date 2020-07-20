@@ -6,3 +6,6 @@ s3contents==0.4.0
 sparkmagic==0.15.0
 hybridcontents==0.3.0
 jupyterhub-passthroughauth==0.0.1
+git-remote-codecommit==1.13
+sparkmonitor==0.0.9
+jupyterhub-idle-culler==1.0
