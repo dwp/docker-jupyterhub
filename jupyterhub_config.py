@@ -34,13 +34,9 @@ c.JupyterHub.ssl_cert = "/etc/jupyterhub/conf/cert.pem"
 
 c.JupyterHub.services = [
     {
-        "name": "cull-idle",
+        "name": "idle-culler",
         "admin": True,
-        "command": [
-            sys.executable,
-            "/usr/local/share/jupyterhub/cull_idle_servers.py",
-            "--timeout=3600",
-        ],
+        "command": [sys.executable, "-m", "jupyterhub_idle_culler", "--timeout=3600"],
     }
 ]
 
