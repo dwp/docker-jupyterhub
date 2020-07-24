@@ -15,5 +15,9 @@ echo "${PUSH_CRON:-* * * * 2099} curl -s https://localhost:8000/hub/metrics -k |
 crontab /tmp/crontab
 rm /tmp/crontab
 
+mkdir /git
+chown "${USER}:${USER}" /git
+chmod 755 /git
+
 /usr/sbin/crond -f -l 8 &
 jupyterhub $@
