@@ -39,9 +39,7 @@ c.HybridContentsManager.manager_kwargs = {
         "kms_key_id": os.environ.get("KMS_SHARED"),
         "endpoint_url": "https://s3.eu-west-2.amazonaws.com",
     },
-    "git": {
-        "root_dir": "/git"
-    },
+    "git": {"root_dir": "/git"},
 }
 
 
