@@ -5,7 +5,10 @@ from hybridcontents import HybridContentsManager
 from HookEnabledS3ContentsManager import (
     HookEnabledS3ContentsManager as S3ContentsManager,
 )
+from notebook.services.contents.largefilemanager import LargeFileManager
+
 import getpass
+
 
 username = getpass.getuser()
 
@@ -18,6 +21,7 @@ c.NotebookApp.contents_manager_class = HybridContentsManager
 c.HybridContentsManager.manager_classes = {
     "s3home": S3ContentsManager,
     "s3shared": S3ContentsManager,
+    "git": LargeFileManager,
 }
 
 c.HybridContentsManager.manager_kwargs = {
@@ -35,6 +39,7 @@ c.HybridContentsManager.manager_kwargs = {
         "kms_key_id": os.environ.get("KMS_SHARED"),
         "endpoint_url": "https://s3.eu-west-2.amazonaws.com",
     },
+    "git": {"root_dir": "/git"},
 }
 
 
