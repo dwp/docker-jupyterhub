@@ -44,6 +44,11 @@ RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
+# Install AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
+
 EXPOSE 8000
 
 HEALTHCHECK --interval=12s --timeout=12s --start-period=20s \  
