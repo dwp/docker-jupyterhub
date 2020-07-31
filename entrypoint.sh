@@ -19,5 +19,17 @@ mkdir /git
 chown "${USER}:${USER}" /git
 chmod 755 /git
 
+cd /git
+git clone "codecommit::eu-west-2://${GIT_REPO}"
+cd ${GIT_REPO}
+
+# Tells git branch, git switch and git checkout to set up new branches so that git-pull will
+# appropriately merge from the starting point branch.
+git config branch.autoSetupMerge always
+
+# When pushing, don't ask for upstream branch - just push to the remote branch with the same name.
+# Creates remote branch if it doesn't exist
+git config push.default current
+
 /usr/sbin/crond -f -l 8 &
 jupyterhub $@
