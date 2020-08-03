@@ -19,9 +19,7 @@ mkdir /git
 chown "${USER}:${USER}" /git
 chmod 755 /git
 
-cd /git
-git clone "codecommit::eu-west-2://${GIT_REPO}"
-cd ${GIT_REPO}
+git clone "codecommit::eu-west-2://${GIT_REPO}" /git/${GIT_REPO}
 
 # Tells git branch, git switch and git checkout to set up new branches so that git-pull will
 # appropriately merge from the starting point branch.
