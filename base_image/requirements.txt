@@ -5,10 +5,7 @@ s3contents==0.4.0
 sparkmagic==0.15.0
 hybridcontents==0.3.0
 jupyterhub-passthroughauth==0.0.1
-<<<<<<< HEAD:requirements.txt
 git-remote-codecommit==1.13
 jupyterhub-idle-culler==1.0
 jupyterlab-git==0.20.0
-=======
 pyspark==2.4.5
->>>>>>> Split docker images:base_image/requirements.txt
