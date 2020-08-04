@@ -4,18 +4,11 @@ RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs 
 
 RUN npm install -g configurable-http-proxy
 
-RUN python3 -m ensurepip
-
-RUN pip3 install --upgrade pip setuptools wheel pycurl
-
-RUN pip3 install --upgrade jupyterlab-git
+RUN python3 -m ensurepip && \
+    pip3 install --upgrade pip setuptools wheel pycurl
 
 ADD requirements.txt /srv/jupyterhub/
-RUN pip3 install \
-    --trusted-host pypi.org \
-    --trusted-host pypi.python.org \
-    --trusted-host files.pythonhosted.org \
-    -r /srv/jupyterhub/requirements.txt
+RUN pip3 install -r /srv/jupyterhub/requirements.txt
 
 RUN jupyter lab build --minimize=False \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
@@ -43,11 +36,6 @@ RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev
 
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
-
-# Install AWS CLI
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-RUN unzip awscliv2.zip
-RUN ./aws/install
 
 EXPOSE 8000
 
