@@ -23,11 +23,11 @@ git clone "codecommit::eu-west-2://${GIT_REPO}" /git/${GIT_REPO}
 
 # Tells git branch, git switch and git checkout to set up new branches so that git-pull will
 # appropriately merge from the starting point branch.
-git config branch.autoSetupMerge always
+git config --global branch.autoSetupMerge always
 
 # When pushing, don't ask for upstream branch - just push to the remote branch with the same name.
 # Creates remote branch if it doesn't exist
-git config push.default current
+git config --global push.default current
 
 /usr/sbin/crond -f -l 8 &
 jupyterhub $@
