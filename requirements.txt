@@ -8,4 +8,4 @@ hybridcontents==0.3.0
 jupyterhub-passthroughauth==0.0.1
 git-remote-codecommit==1.13
 jupyterhub-idle-culler==1.0
-jupyterlab-git==0.20.0
+jupyterlab-git==0.21.0rc0
