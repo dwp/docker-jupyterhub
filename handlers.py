@@ -487,10 +487,13 @@ class ZMQChannelsHandler(AuthenticatedZMQStreamHandler):
         if self.kernel_id in km:
             km.notify_disconnect(self.kernel_id)
             km.remove_restart_callback(
-                self.kernel_id, self.on_kernel_restarted,
+                self.kernel_id,
+                self.on_kernel_restarted,
             )
             km.remove_restart_callback(
-                self.kernel_id, self.on_restart_failed, "dead",
+                self.kernel_id,
+                self.on_restart_failed,
+                "dead",
             )
 
             # start buffering instead of closing if this was the last connection
