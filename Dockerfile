@@ -21,7 +21,6 @@ RUN jupyter-kernelspec install sparkmagic/kernels/pysparkkernel \
     && jupyter serverextension enable --py sparkmagic
 
 ADD proxy_configuration.py /usr/lib/python3.8/site-packages/proxy_configuration.py
-ADD HookEnabledS3ContentsManager.py /usr/lib/python3.8/site-packages/HookEnabledS3ContentsManager.py
 ADD jupyterhub_config.py /etc/jupyterhub/conf/jupyterhub_config.py
 
 # Add message logging
