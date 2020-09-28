@@ -11,7 +11,7 @@ username = getpass.getuser()
 
 c = get_config()
 
-c.NotebookApp.terminals_enabled = False
+c.NotebookApp.terminals_enabled = True
 
 c.NotebookApp.contents_manager_class = HybridContentsManager
 
