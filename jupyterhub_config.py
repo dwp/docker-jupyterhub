@@ -13,6 +13,12 @@ c.Spawner.default_url = "/lab"
 c.Spawner.environment = {
     "SPARKMAGIC_CONF_DIR": os.environ.get("SPARKMAGIC_CONF_DIR", "~/.sparkmagic"),
     "JUPYTER_ENABLE_LAB": "yes",
+    "HTTP_PROXY": os.environ.get("HTTP_PROXY"),
+    "HTTPS_PROXY": os.environ.get("HTTPS_PROXY"),
+    "NO_PROXY": os.environ.get("NO_PROXY"),
+    "http_proxy": os.environ.get("http_proxy"),
+    "https_proxy": os.environ.get("https_proxy"),
+    "no_proxy": os.environ.get("no_proxy")
 }
 c.Spawner.env_keep = [
     "AWS_DEFAULT_REGION",
