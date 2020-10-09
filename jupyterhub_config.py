@@ -18,7 +18,7 @@ c.Spawner.environment = {
     "NO_PROXY": os.environ.get("NO_PROXY"),
     "http_proxy": os.environ.get("http_proxy"),
     "https_proxy": os.environ.get("https_proxy"),
-    "no_proxy": os.environ.get("no_proxy")
+    "no_proxy": os.environ.get("no_proxy"),
 }
 c.Spawner.env_keep = [
     "AWS_DEFAULT_REGION",
