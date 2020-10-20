@@ -8,11 +8,8 @@ if [ -d /mnt/s3fs/s3-home ]
 then
     adduser --no-create-home --home "/home/${USER}" -D --uid 1001 -s /bin/bash ${USER}
     ln -s /mnt/s3fs/s3-home /home/${USER}
-    for f in `ls -1A /etc/skel`
-    do
-      cp -Rf /etc/skel/$f /home/${USER}
-      chown -R "${USER}:${USER}" /home/$USER/$f
-    done
+    cp -rf /etc/skel/. /home/${USER}
+    chown -R "${USER}:${USER}" /home/${USER}
 else
     adduser --home "/home/${USER}" -D --uid 1001 -s /bin/bash ${USER}
 fi
