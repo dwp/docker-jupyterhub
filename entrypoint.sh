@@ -24,18 +24,26 @@ rm /tmp/crontab
 
 mkdir /git
 chmod 755 /git
-
-git clone "codecommit::eu-west-2://${GIT_REPO}" /git/${GIT_REPO}
-
 chown -R "${USER}:${USER}" /git
+
+if [ "${GITHUB_URL}" != "" ]
+then
+    if [ "${HTTPS_PROXY}" != "" ]
+    then
+      echo -n | /usr/bin/openssl s_client -connect ${GITHUB_URL}:443 -proxy ${HTTPS_PROXY} | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/git_cert.pem
+    else
+      echo -n | /usr/bin/openssl s_client -connect ${GITHUB_URL}:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/git_cert.pem
+    fi
+    git config --system http.sslCAInfo /tmp/git_cert.pem
+fi
 
 # Tells git branch, git switch and git checkout to set up new branches so that git-pull will
 # appropriately merge from the starting point branch.
-git config --global branch.autoSetupMerge always
+git config --system branch.autoSetupMerge always
 
 # When pushing, don't ask for upstream branch - just push to the remote branch with the same name.
 # Creates remote branch if it doesn't exist
-git config --global push.default current
+git config --system push.default current
 
 /usr/sbin/crond -f -l 8 &
 jupyterhub $@
