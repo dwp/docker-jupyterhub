@@ -22,6 +22,10 @@ echo "${PUSH_CRON:-* * * * 2099} curl -s https://localhost:8000/hub/metrics -k |
 crontab /tmp/crontab
 rm /tmp/crontab
 
+mkdir /git
+chmod 755 /git
+chown -R "${USER}:${USER}" /git
+
 if [ "${GITHUB_URL}" != "" ]
 then
     if [ "${HTTPS_PROXY}" != "" ]
