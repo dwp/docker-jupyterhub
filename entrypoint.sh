@@ -14,8 +14,10 @@ else
     adduser --home "/home/${USER}" -D --uid 1001 -s /bin/bash ${USER}
 fi
 sed -i "s/USERNAME_TO_REPLACE/${USER}/g" /home/${USER}/.sparkmagic/config.json
-sed -i "s/EMR_HOST_NAME_TO_REPLACE/${EMR_HOST_NAME}/g" /home/${USER}/.sparkmagic/config.json
+sed -i "s/EMR_URL_TO_REPLACE/${EMR_URL}/g" /home/${USER}/.sparkmagic/config.json
 sed -i "s/LIVY_SESSION_STARTUP_TIMEOUT_SECONDS_TO_REPLACE/${LIVY_SESSION_STARTUP_TIMEOUT_SECONDS:-120}/g" /home/${USER}/.sparkmagic/config.json
+sed -i "s/JWT_TOKEN_TO_REPLACE/${JWT_TOKEN}/g" /home/${USER}/.sparkmagic/config.json
+
 
 crontab -l > /tmp/crontab
 echo "${PUSH_CRON:-* * * * 2099} curl -s https://localhost:8000/hub/metrics -k | curl -s -k --data-binary @- https://${PUSH_HOST:-localhost}:${PUSH_PORT:-9091}/metrics/job/jupyterhub/instance/${USER}" >> /tmp/crontab
