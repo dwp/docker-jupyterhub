@@ -72,3 +72,6 @@ else:
 """HACK: consume HTTPS_PROXY and NO_PROXY environment variables so Hub can connect to external services.
 https://github.com/jupyterhub/oauthenticator/issues/217"""
 HTTPRequest._DEFAULTS["prepare_curl_callback"] = configure_proxy
+
+"""Disable SSL verification for livy requests"""
+HTTPRequest._DEFAULTS["validate_cert"] = False
