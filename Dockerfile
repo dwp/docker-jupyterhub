@@ -1,6 +1,6 @@
 FROM alpine:3.13
 
-RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev py3-zmq linux-pam git
+RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev py3-pyzmq linux-pam git
 
 RUN npm install -g configurable-http-proxy
 
