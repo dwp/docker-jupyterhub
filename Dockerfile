@@ -6,7 +6,7 @@ RUN npm install -g configurable-http-proxy
 
 RUN python3 -m ensurepip && \
     pip3 install --upgrade pip setuptools wheel pycurl
-RUN pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy pandas==0.25.3 
+RUN pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy numpy pandas 
 RUN pip3 instal --no-deps pm4py
 
 ADD requirements.txt /srv/jupyterhub/
