@@ -11,3 +11,10 @@ pip>=19.2 # not directly required, pinned by Snyk to avoid a vulnerability
 jupyterlab-git==0.21.1
 dateparser==1.0.0
 beautifulsoup4==4.9.3
+matplotlib==3.4.3
+scikit-learn==0.20.4
+scipy==1.7.1
+blogdown==1.2.0
+leaflet==0.0.3
+pm4py==2.2.12
+distill-framework==0.1.3
