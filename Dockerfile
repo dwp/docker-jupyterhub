@@ -1,17 +1,14 @@
 FROM alpine:3.13
 
-RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig tesseract-ocr python3 py3-numpy python3-dev py3-pyzmq linux-pam git
+RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev py3-pyzmq linux-pam git
 
 RUN npm install -g configurable-http-proxy
 
 RUN python3 -m ensurepip && \
-    pip3 install --upgrade pip setuptools wheel pycurl && \
-    apk add --no-cache --virtual .build-deps zlib-dev make jpeg-dev && \
-    pip3 install matplotlib && \
-    apk del .build-deps
-    
-RUN pip3 install pandas pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy && \ 
-    pip3 install --no-deps pm4py
+    pip3 install --upgrade pip setuptools wheel pycurl
+
+RUN pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy numpy pandas 
+RUN pip3 install --no-deps pm4py
 
 ADD requirements.txt /srv/jupyterhub/
 ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
