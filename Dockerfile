@@ -8,6 +8,8 @@ RUN python3 -m ensurepip && \
     pip3 install --upgrade pip setuptools wheel pycurl
 RUN pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy numpy pandas 
 RUN pip3 install --no-deps pm4py
+RUN pip3 install matplotlib && \
+    apk del .build-deps
 
 ADD requirements.txt /srv/jupyterhub/
 ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
