@@ -5,7 +5,9 @@ RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs 
 RUN npm install -g configurable-http-proxy
 
 RUN python3 -m ensurepip && \
-    pip3 install --upgrade pip setuptools wheel pycurl
+    pip3 install --upgrade pip setuptools wheel pycurl && \
+    pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy numpy pandas && \ 
+    pip3 install --no-deps pm4py
 
 ADD requirements.txt /srv/jupyterhub/
 ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
