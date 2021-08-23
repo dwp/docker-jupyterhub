@@ -6,7 +6,7 @@ RUN npm install -g configurable-http-proxy
 
 RUN python3 -m ensurepip && \
     pip3 install --upgrade pip setuptools wheel pycurl && \
-    apk add --no-cache --virtual .build-deps zlib-dev make py-numpy-dev jpeg-dev && \
+    apk add --no-cache --virtual .build-deps zlib-dev make jpeg-dev && \
     pip3 install matplotlib && \
     apk del .build-deps
     
