@@ -1,12 +1,13 @@
 FROM alpine:3.13
 
-RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev py3-pyzmq linux-pam git
-
+RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc gfortran krb5-dev krb5-libs libffi-dev nodejs npm openssl pkgconfig python3 python3-dev py3-pyzmq linux-pam git \
+    && apk add --no-cache py3-numpy py3-numpy-dev py3-scipy py3-scikit-learn jpeg-dev zlib-dev
+    
 RUN npm install -g configurable-http-proxy
 
 RUN python3 -m ensurepip && \
     pip3 install --upgrade pip setuptools wheel pycurl && \
-    pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy numpy pandas && \ 
+    pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy pandas && \ 
     pip3 install --no-deps pm4py
 
 ADD requirements.txt /srv/jupyterhub/
