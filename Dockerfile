@@ -8,7 +8,8 @@ RUN npm install -g configurable-http-proxy
 RUN python3 -m ensurepip && \
     pip3 install --upgrade pip setuptools wheel pycurl && \
     pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy pulp==2.1 && \ 
-    pip3 install --no-deps pm4py
+    pip3 install --no-deps pm4py && \
+    pip install -U spacy
 
 ADD requirements.txt /srv/jupyterhub/
 ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
