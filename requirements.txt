@@ -14,7 +14,6 @@ beautifulsoup4==4.9.3
 blogdown==1.2.0
 leaflet==0.0.3
 distill-framework==0.1.3
-python-dateutil==2.8.2
 kiwisolver==1.3.1
 Pillow==8.3.0
 pyparsing==3.0.0b2
