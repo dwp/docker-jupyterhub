@@ -1,4 +1,4 @@
-jupyterlab==3.1.4
+jupyterlab==2.3.0
 oauthenticator==0.11.0
 pypandoc==1.5
 pyspark==2.4.8
