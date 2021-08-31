@@ -1,8 +1,8 @@
-jupyterlab==2.1.4
+jupyterlab==3.0.0
 oauthenticator==0.11.0
 pypandoc==1.5
-pyspark==2.4.5
-sparkmagic==0.15.0
+pyspark==2.4.8
+sparkmagic==0.17.1
 hybridcontents==0.3.0
 jupyterhub-passthroughauth==0.0.1
 git-remote-codecommit==1.13
