@@ -33,7 +33,7 @@ RUN mkdir -p /etc/skel/.sparkmagic /etc/skel/.jupyter/
 ADD jupyter_local_conf.py /etc/skel/.jupyter/jupyter_notebook_config.py
 ADD template_sparkmagic_config.json /etc/skel/.sparkmagic/config.json
 
-RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev py3-numpy-dev jpeg-dev zlib-dev krb5-dev
+RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev py3-numpy-dev jpeg-dev zlib-dev
 
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
