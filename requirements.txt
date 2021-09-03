@@ -25,7 +25,6 @@ deprecation==2.1.0
 tqdm==4.62.2
 StringDist==1.0.9
 pyemd==0.5.1
-jsonpickle==2.0.0
 sympy==1.8
 pulp==2.1
 distill-framework==0.1.3
