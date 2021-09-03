@@ -11,6 +11,7 @@ RUN python3 -m ensurepip && \
 ADD requirements.txt /srv/jupyterhub/
 ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN pip3 install -r /srv/jupyterhub/requirements.txt && \
+    pip3 install jsonpickle && \
     pip3 install --no-deps pm4py
 
 RUN jupyter lab build --minimize=False \
