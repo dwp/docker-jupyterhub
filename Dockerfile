@@ -6,9 +6,7 @@ RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc gfortran krb5-dev k
 RUN npm install -g configurable-http-proxy
 
 RUN python3 -m ensurepip && \
-    pip3 install --upgrade pip setuptools wheel pycurl && \
-    pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy pulp==2.1 && \ 
-    pip3 install --no-deps pm4py
+    pip3 install --upgrade pip setuptools wheel pycurl
 
 ADD requirements.txt /srv/jupyterhub/
 ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
@@ -35,7 +33,7 @@ RUN mkdir -p /etc/skel/.sparkmagic /etc/skel/.jupyter/
 ADD jupyter_local_conf.py /etc/skel/.jupyter/jupyter_notebook_config.py
 ADD template_sparkmagic_config.json /etc/skel/.sparkmagic/config.json
 
-RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev py3-numpy-dev peg-dev zlib-dev krb5-dev
+RUN apk del alpine-sdk g++ gcc krb5-dev libffi-dev npm pkgconfig python3-dev py3-numpy-dev jpeg-dev zlib-dev krb5-dev
 
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
