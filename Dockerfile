@@ -6,13 +6,13 @@ RUN apk add --no-cache alpine-sdk bash curl-dev curl g++ gcc gfortran krb5-dev k
 RUN npm install -g configurable-http-proxy
 
 RUN python3 -m ensurepip && \
-    pip3 install --upgrade pip setuptools wheel pycurl
+    pip3 install --upgrade pip setuptools wheel pycurl && \
+    pip3 install pyvis graphviz pydotplus pytz intervaltree deprecation tqdm stringdist pyemd jsonpickle sympy pulp==2.1 && \ 
+    pip3 install --no-deps pm4py
 
 ADD requirements.txt /srv/jupyterhub/
 ARG CRYPTOGRAPHY_DONT_BUILD_RUST=1
-RUN pip3 install -r /srv/jupyterhub/requirements.txt && \
-    pip3 install jsonpickle && \
-    pip3 install --no-deps pm4py
+RUN pip3 install -r /srv/jupyterhub/requirements.txt 
 
 RUN jupyter lab build --minimize=False \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
