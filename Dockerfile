@@ -16,6 +16,8 @@ RUN jupyter lab build --minimize=False \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager@2.0
 
+RUN python3 -m spacy download en_core_web_sm
+
 WORKDIR /usr/lib/python3.8/site-packages/
 
 RUN jupyter-kernelspec install sparkmagic/kernels/pysparkkernel \
