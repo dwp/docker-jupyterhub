@@ -19,7 +19,7 @@ blogdown==1.2.0
 leaflet==0.0.3
 distill-framework==0.1.3
 kiwisolver==1.3.1
-Pillow==8.3.0
+Pillow==8.3.2
 pyparsing==3.0.0b2
 matplotlib==3.3.4
 blis==0.7.4
@@ -44,7 +44,7 @@ wasabi==0.8.2
 threadpoolctl==2.0.0
 seaborn==0.11.1
 scipy==1.6.2
-nltk==3.6.1
+nltk==3.6.4
 statsmodels==0.12.2
 fuzzywuzzy==0.18.0  
 openpyxl==3.0.7
