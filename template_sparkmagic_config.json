@@ -67,7 +67,8 @@
 
   "server_extension_default_kernel_name": "pysparkkernel",
   "custom_headers": {
-    "Authorization": "JWT_TOKEN_TO_REPLACE"
+    "Authorization": "JWT_TOKEN_TO_REPLACE",
+    "Username": "USERNAME_TO_REPLACE"
   },
 
   "retry_policy": "configurable",
