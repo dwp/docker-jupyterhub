@@ -1,5 +1,5 @@
 numpy==1.22.0
-GitPython==3.1.14
+GitPython==3.1.27
 ipykernel==5.5.3
 ipython==7.22.0
 jupyterlab==2.1.4
