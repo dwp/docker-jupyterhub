@@ -1,9 +1,9 @@
 numpy==1.22.0
 GitPython==3.1.14
 ipykernel==5.5.3
-ipython==7.22.0
+ipython==7.31.1
 jupyterlab==2.1.4
-oauthenticator==0.11.0
+oauthenticator==15.0.0
 pypandoc==1.5
 pyspark==2.4.5
 sparkmagic==0.15.0
@@ -43,7 +43,7 @@ wasabi==0.8.2
 threadpoolctl==2.0.0
 seaborn==0.11.1
 scipy==1.6.2
-nltk==3.6.1
+nltk==3.6.6
 statsmodels==0.12.2
 fuzzywuzzy==0.18.0  
 openpyxl==3.0.7
@@ -52,3 +52,4 @@ python-Levenshtein==0.12.2
 PyDriller==2.0
 dplython==0.0.7
 dfply==0.3.3
+wheel>=0.38.0 # not directly required, pinned by Snyk to avoid a vulnerability
