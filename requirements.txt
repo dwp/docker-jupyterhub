@@ -52,3 +52,5 @@ python-Levenshtein==0.12.2
 PyDriller==2.0
 dplython==0.0.7
 dfply==0.3.3
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+wheel>=0.38.0 # not directly required, pinned by Snyk to avoid a vulnerability
