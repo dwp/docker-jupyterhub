@@ -23,7 +23,7 @@ pyparsing==3.0.0b2
 matplotlib==3.3.4
 blis==0.7.4
 catalogue==2.0.6
-certifi==2021.5.30
+certifi==2022.12.7
 charset-normalizer==2.0.4
 cymem==2.0.5
 murmurhash==1.0.5
@@ -52,3 +52,4 @@ python-Levenshtein==0.12.2
 PyDriller==2.0
 dplython==0.0.7
 dfply==0.3.3
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
