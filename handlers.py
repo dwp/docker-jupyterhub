@@ -78,7 +78,6 @@ class KernelActionHandler(APIHandler):
             km.interrupt_kernel(kernel_id)
             self.set_status(204)
         if action == "restart":
-
             try:
                 yield maybe_future(km.restart_kernel(kernel_id))
             except Exception as e:
@@ -368,7 +367,6 @@ class ZMQChannelsHandler(AuthenticatedZMQStreamHandler):
             "comm_open",
             "execute_input",
         }:
-
             # Remove the counts queued for removal.
             now = IOLoop.current().time()
             while len(self._iopub_window_byte_queue) > 0:
