@@ -1,7 +1,7 @@
 numpy==1.22.0
 GitPython==3.1.14
 ipykernel==5.5.3
-ipython==7.22.0
+ipython==8.10.0
 jupyterlab==2.1.4
 oauthenticator==0.11.0
 pypandoc==1.5
@@ -52,3 +52,13 @@ python-Levenshtein==0.12.2
 PyDriller==2.0
 dplython==0.0.7
 dfply==0.3.3
+cryptography>=41.0.4 # not directly required, pinned by Snyk to avoid a vulnerability
+jupyter-core>=4.11.2 # not directly required, pinned by Snyk to avoid a vulnerability
+mako>=1.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
+mistune>=2.0.3 # not directly required, pinned by Snyk to avoid a vulnerability
+nbconvert>=6.3.0b0 # not directly required, pinned by Snyk to avoid a vulnerability
+notebook>=6.4.12 # not directly required, pinned by Snyk to avoid a vulnerability
+pygments>=2.15.0 # not directly required, pinned by Snyk to avoid a vulnerability
+requests-kerberos>=0.13.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+tornado>=6.3.3 # not directly required, pinned by Snyk to avoid a vulnerability
